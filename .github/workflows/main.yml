@@ -1,24 +1,10 @@
 name: Workflow Evento
 on:
-  workflow_dispatch:
-    inputs: 
-      valor_numerico:
-        type: number
-        default: 20
-      valor_string:
-        type: string
-        default: "Valor xpto"
-      valor_boolean:
-        type: boolean
-        default: true
+  push:
 jobs:
-  teste:
-    permissions: write-all
+  apenas-main:
+    name: Esse job só executa na branch main
     runs-on: ubuntu-latest
     steps:
-      - name: Função Contains
-        run: echo "${{ contains(inputs.valor_string, github.actor) }}"
-      - name: Função Format
-        run: "echo ${{ format('Formato String: {0} - Formato Number: {1} - Formato Boolen: {2}', inputs.valor_string, inputs.valor_numerico, inputs.valor_boolean) }}"
-      - name: Função json
-        run: echo "${{ toJson(github) }}"
+      - name: Executando na main
+        run: echo "Executando comando na main"
