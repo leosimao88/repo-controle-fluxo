@@ -10,7 +10,5 @@ jobs:
   exemplo-fluxo-execucao-02:
     runs-on: ubuntu-latest
     steps:
-      - name: Vai falhar
-        run: 1
       - name: Execução com sucesso
         run: echo "Execução de Fluxo"
