@@ -1,17 +1,15 @@
 name: Workflow Concorrencia
 run-name: Workflow Concorrencia ${{ github.run_number }}
 on:
-  workflow_dispatch:
-    inputs:
-      chave:
-        type: string
-        default: pipeline-aula
+  push:
+
+concurrency: 
+  group: ${{ inputs.chave }}-${{ github.workflow }}
+  cancel-in-progress: true 
+
 jobs:
   exemplo-fluxo-execucao-01:
     runs-on: ubuntu-latest
-    concurrency: 
-      group: ${{ inputs.chave }}
-      cancel-in-progress: true
     steps:
       - name: Execução do job teste
         run: |
