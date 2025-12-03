@@ -9,6 +9,7 @@ jobs:
         run: 1
   exemplo-fluxo-execucao-02:
     runs-on: ubuntu-latest
+    needs: [exemplo-fluxo-execucao-01]
     steps:
       - name: Execução com sucesso
         run: echo "Execução de Fluxo"
