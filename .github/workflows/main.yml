@@ -24,3 +24,5 @@ jobs:
       - name: Execução em Todos
         if: ${{ github.ref == 'refs/heads/main' }}
         run: ech "Execução em Todos"
+      - name: Envio de Erros
+        run: echo "Envio de erro"
