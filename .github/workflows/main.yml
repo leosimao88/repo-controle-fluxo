@@ -1,16 +1,19 @@
-name: Workflow Evento
+name: Workflow Matriz
 on:
-  push:
+  workflow_dispatch:
 jobs:
-  exemplo-fluxo-execucao-01:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Vai falhar
-        run: 1
-  exemplo-fluxo-execucao-02:
-    runs-on: ubuntu-latest
-    needs: [exemplo-fluxo-execucao-01]
-    if: ${{ failure() }}
-    steps:
-      - name: Execução com sucesso
-        run: echo "Execução de Fluxo"
+  exemplo-fluxo-execucao:
+    strategy:
+      matrix:
+        versao: [16,18,20]
+        plataforma: ["windows", "ubuntu"]
+    runs-on:  "${{ matrix.plataforma }}-latest"
+    steps: 
+      - name: Instalação do node  
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.versao }}
+      - name: Exibição da versão da plataforma
+        run: |
+          node --version
+          echo ${{ runner.os }}
