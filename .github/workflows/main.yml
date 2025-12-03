@@ -2,28 +2,15 @@ name: Workflow Evento
 on:
   push:
 jobs:
-  apenas-main:
-    if: ${{ github.ref == 'refs/heads/main' }}
-    name: Esse job só executa na branch main
+  exemplo-fluxo-execucao-01:
     runs-on: ubuntu-latest
     steps:
-      - name: Executando na main
-        run: echo "Executando comando na main"
-  todos:
+      - name: Vai falhar
+        run: 1
+  exemplo-fluxo-execucao-02:
     runs-on: ubuntu-latest
     steps:
-      - name: Execução em Feature
-        if: ${{ contains(github.ref, 'refs/heads/feature') }}
-        run: echo "Execução em Feature"
-      - name: Execução em Hotfix
-        if: ${{ contains(github.ref, 'refs/heads/hotfix') }}
-        run: echo "Execução em hotfix"
-      - name: Execução em Main
-        if: ${{ github.ref == 'refs/heads/main' }}
-        run: echo "Execução em main"
-      - name: Execução em Todos
-        if: ${{ github.ref == 'refs/heads/main' }}
-        run: ech "Execução em Todos"
-      - name: Envio de Erros
-        if: ${{ failure() }}
-        run: echo "Envio de erro"
+      - name: Vai falhar
+        run: 1
+      - name: Execução com sucesso
+        run: echo "Execução de Fluxo"
