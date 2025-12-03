@@ -9,7 +9,9 @@ on:
 jobs:
   exemplo-fluxo-execucao-01:
     runs-on: ubuntu-latest
-    concurrency: ${{ inputs.chave }}
+    concurrency: 
+      group: ${{ inputs.chave }}
+      cancel-in-progress: true
     steps:
       - name: Execução do job teste
         run: |
