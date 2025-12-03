@@ -23,4 +23,4 @@ jobs:
         run: echo "Execução em main"
       - name: Execução em Todos
         if: ${{ github.ref == 'refs/heads/main' }}
-        run: echo "Execução em Todos"
+        run: ech "Execução em Todos"
